@@ -17,3 +17,20 @@
 .results{border-radius:28px}
 .popup{border-radius:30px}
 @media(max-width:720px){.app{border-radius:20px}.home{grid-template-columns:1fr}.hero{min-height:340px}.hero .mascot{height:75%;width:95%;left:2%}.subjects{grid-template-columns:repeat(3,minmax(0,1fr));padding:10px;gap:7px}.subject{min-height:95px;font-size:13px;border-radius:15px}.subject .symbol{font-size:28px}.logo{font-size:65px}.quizbar{border-radius:20px}.questioncard{border-radius:22px}}
+
+/* Final layout pass: consistent scalable design system */
+:root{--radius:26px;--navy:#15165e;--violet:#4214ac;--pink:#df40b8}
+html{background:#e9e2ff}body{padding:clamp(0px,1.3vw,16px);font-family:Nunito,'Noto Sans KR',sans-serif}
+.app{width:100%;max-width:1500px;min-height:calc(100dvh - 2.6vw);border-radius:32px;box-shadow:0 14px 45px #302a7022}
+.screen{min-height:calc(100dvh - 2.6vw)}
+.home{min-height:calc(100dvh - 2.6vw)}
+.hero{min-height:calc(100dvh - 2.6vw)}
+.subject{border:2px solid #fff;box-shadow:0 7px 16px #211c6440,inset 0 2px 3px #fff5;transition:transform .16s}
+.subject:hover{transform:translateY(-3px)}
+.subject .symbol{filter:drop-shadow(0 3px 2px #0002)}
+.quizbar{background:linear-gradient(110deg,#3738a3,#5940b3)}
+.questioncard{box-shadow:0 0 0 7px #d6ebff}
+.answer{font-weight:900}
+.popup{box-shadow:0 20px 60px #15215470}
+.scorepanel{border-radius:42px}
+@media(max-width:720px){body{padding:0}.app,.screen{min-height:100dvh;border-radius:0}.hero{min-height:40dvh}.home{min-height:100dvh}.subject{aspect-ratio:auto;min-height:100px}.subjects{align-content:start}.questioncard{min-height:calc(100dvh - 115px)}}
