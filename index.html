@@ -129,6 +129,8 @@
  .quizscreen>.topbar>.subjectstack>.subjectpill{font-size:19px;padding:8px 13px}
 }
 </style><style id="quiz-autosubmit-layout">
+.quizscreen .answers:has(.typebox){grid-template-columns:minmax(0,1fr)}
+.quizscreen .answers .typebox{display:block;width:100%;min-width:0;max-width:100%;grid-column:1/-1}
 .quizscreen .questioncount-above{width:min(960px,100%);align-self:center;text-align:left;font-size:clamp(15px,1.65vw,19px);line-height:1.2;margin:0 0 -14px;padding-left:clamp(6px,1vw,12px);font-weight:700;color:#525EA7}
 .quizscreen>.topbar>.timer{min-width:175px;justify-content:center;padding-left:26px;padding-right:26px}
 .quizscreen #nextButton:disabled{background:#b7bdc9!important;color:#f5f5f5!important;box-shadow:none!important;opacity:.8;cursor:not-allowed;transform:none}
