@@ -204,7 +204,7 @@ function updateBookmarkUI(){$('bookmarkCheck').checked=bookmarks.has(index);$('b
 let bookmarkCloseTimer=null;
 function closeBookmarkList(){clearTimeout(bookmarkCloseTimer);bookmarkCloseTimer=null;$('bookmarkList').classList.add('hidden')}
 function toggleBookmarkList(){const list=$('bookmarkList');const opening=list.classList.contains('hidden');closeBookmarkList();if(opening){list.classList.remove('hidden');bookmarkCloseTimer=setTimeout(closeBookmarkList,3000)}}
-document.addEventListener('pointerdown',function(event){const list=document.getElementById('bookmarkList');if(list&&!list.classList.contains('hidden')&&!event.target.closest('#bookmarkListButton'))closeBookmarkList()});
+document.addEventListener('pointerdown',function(event){const list=document.getElementById('bookmarkList');if(list&&!list.classList.contains('hidden')&&!event.target.closest('#bookmarkListButton')&&!event.target.closest('#bookmarkList'))closeBookmarkList()});
 function goBookmark(i){if(!bookmarks.has(i))return;if(!bookmarkView)resumeIndex=index;bookmarkView=true;index=i;$('bookmarkList').classList.add('hidden');render()}
 function resumeQuiz(){bookmarkView=false;index=resumeIndex;$('bookmarkList').classList.add('hidden');render()}
 function dismissTimeWarning(){$('timeWarning').classList.add('hidden')}
