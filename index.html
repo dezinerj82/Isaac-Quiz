@@ -78,6 +78,22 @@
  .quizscreen>.topbar>.timer{font-size:18px;padding:8px 16px}
  .quizscreen>.quizactions>.pill{min-width:88px;padding:9px 13px}
 }
+</style><style id="quiz-mobile-progress-fix">
+/* At narrow widths reserve the first row for the two fixed-size pills;
+   progress gets its own flexible row instead of forcing the timer away. */
+@media(max-width:700px){
+ .quizscreen>.topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;row-gap:14px;align-items:center;width:min(960px,100%)}
+ .quizscreen>.topbar>.subjectpill{grid-column:1;grid-row:1;justify-self:start;order:unset}
+ .quizscreen>.topbar>.timer{grid-column:2;grid-row:1;justify-self:end;order:unset}
+ .quizscreen>.topbar>.progressgroup{grid-column:1 / -1;grid-row:2;width:100%;max-width:none;min-width:0;display:flex;flex:1 1 auto;gap:9px;order:unset}
+ .quizscreen>.topbar>.progressgroup>.progress{flex:1 1 0;min-width:0}
+ .quizscreen>.topbar>.progressgroup>.percent,.quizscreen>.topbar>.progressgroup>.remaining{flex-shrink:0}
+}
+@media(max-width:390px){
+ .quizscreen>.topbar{column-gap:8px}
+ .quizscreen>.topbar>.subjectpill{font-size:19px;padding:8px 13px}
+ .quizscreen>.topbar>.timer{font-size:17px;padding:8px 13px;gap:7px}
+}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" onclick="home()">‹ Back</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div></section>
