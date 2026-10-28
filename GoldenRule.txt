@@ -1,0 +1,32 @@
+ISAAC QUIZ TIME — ACTIVE GOLDEN RULES
+Last updated: 2026-10-29
+Repository: https://github.com/dezinerj82/Isaac-Quiz
+Live site: https://dezinerj82.github.io/Isaac-Quiz/
+Preview: https://dezinerj82.github.io/Isaac-Quiz/preview.html
+
+RESTORE / RESUME COMMAND
+Continue the Isaac Quiz Time GitHub project. Read GoldenRule.txt in the root of dezinerj82/Isaac-Quiz, inspect the latest main branch and actual source files, and continue from the live approved implementation. Follow these active rules and my latest instructions. Do not rebuild from scratch, invent textbook coverage, or report completion until the commit is successful. Check deployment separately before calling the website Ready.
+
+SOURCE OF TRUTH
+The root index.html is the production single-page app, containing active CSS, JavaScript and questions. Root preview.html mirrors index.html for preview. Other root subject HTML files redirect to index.html with a subject query. css/ and js/ contain retained auxiliary stylesheet/script files, not the production app; do not assume editing them changes the live quiz. images/ contains the five Isaac character PNG assets. Backup/ holds legacy and offline materials, not production. Preserve root index.html for GitHub Pages.
+
+NAVIGATION AND CURRICULUM
+The home page shows subject tiles. Science chapter navigation: Chapter 1 — Scientific Skills; Chapter 2 — Textbook chapter pending; Chapter 3 — Textbook chapter pending. Korean chapter navigation: Chapter 1 — Textbook chapter pending; Chapter 2 — Textbook chapter pending. These are DISABLED placeholders until the user supplies the actual textbook chapters and authorizes questions. Do not present generic or old revision questions as verified chapter-specific content. Preserve the existing Korean and Science 30-question sets separately as Exam Revision. Other subjects remain hidden until populated. The user plans to supply textbook PDFs/scans/photos; first analyze pages and learning objectives chapter by chapter, seek confirmation of scope, then populate the chapter quizzes.
+
+ACTIVE QUIZ DESIGN
+Responsive, white-background, pastel rainbow Quiz time branding, rounded friendly fonts, subject/volume menu, timer, progress, question counter, Exit and Next controls. Question x out of x appears above the question card on the left; timer button widened. Next is disabled until answered and only advances. Exit returns to subject selection. A typed answer, where present in other future quizzes, submits with Enter; a selected answer submits on tap; sorting submits when all steps selected; matching submits when all selections complete. Korean and Science Exam Revision use NO TYPING; former typed questions were converted to selectable multiple-choice blanks. Sorting supports tap and drag/drop. Picture questions use visible illustrations or symbols.
+
+BOOKMARKS AND REVIEW
+Bookmark checkbox appears beside question count. Bookmark list button appears when bookmarks exist. Clicking a bookmarked question navigates to it. List closes after 3 seconds or outside click, but inside-list clicks MUST NOT trigger premature closing (exclude #bookmarkList from outside-pointer handler). Answered questions can be reviewed without altering their saved results. Resume returns to the first unanswered/current continuation position. Do not regress this navigation fix.
+
+TIMER AND RESULTS
+Time allowance = number of questions × 3 minutes. At 5 minutes remaining show an overlay with images/Isaac time out.png, dismissible via Continue Quiz. Timer keeps counting. On finish, show the score image above Quiz Complete: >=90% images/Isaac high score.png; >=70% images/Isaac middle score.png; >=50% images/Isaac low score.png; <50% images/Isaac fail.png. Keep Try Again, Back Home and Download Score. Score export includes subject, volume, score, date and incorrect question numbers/text, not personal data uploads.
+
+QUESTION QUALITY
+Keep clear, accurate Primary 3 level questions and answer explanations; avoid ambiguous distractors and repetitive patterns. Supported interactive types include MCQ, selectable blanks, picture questions, true/false, sorting/sequence, matching and drag/drop. For future chapter quizzes prefer a balanced mixture, with NO TYPING when user requests van-friendly use. Default 30 questions per full revision volume unless changed. Never invent syllabus coverage or infer contents of unseen books.
+
+REPOSITORY AND SAFE EDITING
+Before each change, fetch current files and SHAs, inspect paths/dependencies, preserve approved behaviors, update root index.html and preview.html together when applicable, and adjust references when moving assets. Use GitHub commits only after successful writes. For a full backup on request, supply current master command, complete repository, and offline HTML; disclose any offline asset/font differences. Do not claim a full backup unless it is complete. Verify syntax, navigation, timer, scoring, mobile behavior and links as far as available tools allow. Distinguish GitHub commit success from GitHub Pages deployment and actual browser testing. User prefers concise status and the green "Github updated." badge after a successful commit.
+
+NEXT WORK
+Wait for the user's textbook chapter materials and their additional exam design ideas. Keep placeholders disabled until content is supplied. Later explicit user requests override this file.
