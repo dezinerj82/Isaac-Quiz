@@ -33,4 +33,4 @@ NEXT WORK
 Wait for the user's textbook chapter materials and their additional exam design ideas. Keep placeholders disabled until content is supplied. Later explicit user requests override this file.
 
 TIMER VISUAL DESIGN
-The quiz countdown is a compact pastel purple/pink flip-clock with separate HR, MIN and SEC double-digit panels, horizontal card splits, and readable labels. Maintain existing 3-minute-per-question timing and five-minute warning, including responsive mobile layout. The six digit panels update in place each second.
+The quiz countdown is a compact purple flip-clock without a pink background, outer frame, or outer shadow with separate HR, MIN and SEC double-digit panels, horizontal card splits, and readable labels. Maintain existing 3-minute-per-question timing and five-minute warning, including responsive mobile layout. The six digit panels update in place each second.
