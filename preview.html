@@ -326,6 +326,17 @@ button:not(:disabled):active{transform:translateY(4px) scale(.985)!important;box
 .quizscreen button.answer.selected{box-shadow:0 0 0 2px #525ea72e,var(--soft-elevation)}
 .quizscreen button.answer:disabled,.quizscreen button.pill:disabled{cursor:default}
 @media(prefers-reduced-motion:reduce){.quizscreen button.answer,.quizscreen button.pill,.quizscreen button.undo,.quizscreen .bookmarktools button{transition:none}}
+
+/* One neutral, soft drop shadow for every interactive button, including states. */
+:root{--button-shadow:0 3px 8px rgba(41,51,95,.10),0 7px 16px rgba(41,51,95,.07);--button-shadow-pressed:0 1px 4px rgba(41,51,95,.09)}
+#home button:not(:disabled),.selectionscreen button:not(:disabled),.quizscreen button:not(:disabled),.resultscreen button:not(:disabled){
+ box-shadow:var(--button-shadow)!important;
+}
+#home button:not(:disabled):active,.selectionscreen button:not(:disabled):active,.quizscreen button:not(:disabled):active,.resultscreen button:not(:disabled):active{
+ box-shadow:var(--button-shadow-pressed)!important;
+}
+.quizscreen .answer.selected{outline:2px solid var(--purple);outline-offset:0}
+.quizscreen .flip-timer button,.quizscreen .flip-timer .flip-digit{box-shadow:none!important}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><input id="studentName" class="student-name" maxlength="40" placeholder="Type in your name and press Enter" aria-label="Student name" onkeydown="if(event.key==='Enter'){this.blur();saveStudentName()}" onchange="saveStudentName()"><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" id="selectionBack" onclick="selectionBack()">Back</button><button class="back selection-home" onclick="home()">Home</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div><div id="subjectHighlights" class="highlights hidden"></div></section>
