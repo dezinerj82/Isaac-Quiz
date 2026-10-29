@@ -240,6 +240,9 @@ button:not(:disabled):active{transform:translateY(4px) scale(.985)!important;box
 .highlights-bubble{right:-5%;top:-10%;width:48%;height:45%;transform:none}
 .highlights-bubble-text{display:none}
 @media(max-width:540px){.highlights-bubble{right:-4%;top:-8%;width:46%;height:43%}}
+
+.highlights-bubble{right:auto!important;transform:translate(-50%,-50%);width:44%;height:44%;z-index:2;transition:left 1.35s ease,top 1.35s ease}
+.highlights-gauge svg{overflow:visible}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><input id="studentName" class="student-name" maxlength="40" placeholder="Type in your name and press Enter" aria-label="Student name" onkeydown="if(event.key==='Enter'){this.blur();saveStudentName()}" onchange="saveStudentName()"><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" id="selectionBack" onclick="selectionBack()">Back</button><button class="back selection-home" onclick="home()">Home</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div><div id="subjectHighlights" class="highlights hidden"></div></section>
@@ -361,12 +364,12 @@ function renderHighlights(){
  const bubbleFile=pct>=70?'bubble_green.png':pct>=50?'bubble_orange.png':'bubble_red.png';
  const gauge='<svg viewBox="0 0 420 248" role="img" aria-label="Average score '+pct+' percent">'+
  '<image href="images/progress_bar.png" x="25" y="15" width="370" height="213" preserveAspectRatio="xMidYMid meet"/>'+
- (all.length?'<g transform="translate(210 205) rotate('+(-180+pct*1.8).toFixed(2)+')"><image href="images/progress_handle.png" x="-23" y="-35" width="184" height="70" preserveAspectRatio="xMidYMid meet"/></g>'+
- '<text x="'+Math.min(390,Math.max(30,markerX+(markerX>=210?23:-23))).toFixed(1)+'" y="'+(markerY-3).toFixed(1)+'" text-anchor="'+(markerX>=210?'start':'end')+'" fill="#29335f" font-size="22" font-weight="700">'+pct+'%</text>':'')+
+ (all.length?'<g transform="translate(210 205)"><g><animateTransform attributeName="transform" type="rotate" from="-136" to="'+(-136+pct*1.8).toFixed(2)+'" dur="1.35s" calcMode="spline" keyTimes="0;1" keySplines="0.2 0.8 0.2 1" fill="freeze"/><image href="images/progress_handle.png" x="-37" y="-178.5" width="223" height="218" preserveAspectRatio="none"/></g></g>'+
+ '<text x="'+Math.min(385,Math.max(35,markerX+(markerX>=210?22:-22))).toFixed(1)+'" y="'+(markerY-12).toFixed(1)+'" text-anchor="'+(markerX>=210?'start':'end')+'" fill="#29335f" font-size="22" font-weight="700">'+pct+'%</text>':'')+
  '</svg>';
 
  el.innerHTML='<h2>'+escapeHtml(activeStudentName()||'Student')+' Highlight</h2><p class="highlights-date">'+highlightDate()+'</p>'+
- '<div class="highlights-gauge">'+gauge+(all.length?'<div class="highlights-bubble" style="background-image:url(images/'+bubbleFile+')"></div>':'')+'</div>'+
+ '<div class="highlights-gauge">'+gauge+(all.length?'<div class="highlights-bubble" style="background-image:url(images/'+bubbleFile+');left:'+Math.min(81,Math.max(19,markerX/420*100+14))+'%;top:'+Math.min(51,Math.max(-8,markerY/248*100-37))+'%"></div>':'')+'</div>'+
  '<div class="highlights-stats"><div class="highlights-stat"><small>Total attempts</small><strong>'+all.length+'</strong></div>'+
  '<div class="highlights-stat high"><small>High score</small><strong>'+counts.high+'</strong></div>'+
  '<div class="highlights-stat medium"><small>Medium score</small><strong>'+counts.medium+'</strong></div>'+
