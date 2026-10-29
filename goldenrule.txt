@@ -37,3 +37,6 @@ The quiz countdown is a compact purple flip-clock without a pink background, out
 
 QUIZ HEADER DESIGN
 Keep subject, compact rounded lavender flip-clock, Exit, and Next visually aligned at 52px height with coordinated purple and blue colors. On narrow screens, subject/timer share the first row and Exit/Next the second. Preserve button actions and countdown behavior.
+
+HEADER REFINEMENT
+The subject pill uses a larger font. The timer has no outer background, border or shadow; its digits are solid blue matching the Exit button, with no horizontal split lines. Timer colons and HR/MIN/SEC labels also use the blue theme. Preserve the compact header layout and functionality.
