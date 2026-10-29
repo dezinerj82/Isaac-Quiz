@@ -66,6 +66,7 @@ DAILY QUIZ — BIWEEKLY FROM 2027-01-03 (PM4 ONWARD)
 EXERCISE — ON-DEMAND WEAK-AREA PRACTICE
 - Exercise is a third quiz category alongside Daily Quiz and Exam Revision. It is created only when the user requests targeted practice for a particular weakness in a subject, and does not require the school booklist, textbook chapters or exam scope.
 - Follow the user's specified weak area and ability level, including levels below the student's current school year (for example, kindergarten-level Malay vocabulary). Adapt difficulty and question formats to the actual need rather than assuming the school grade.
+- Exercise sets must be organized under their actual subject (Math, English, Malay, Korean, Science, etc.), with separate topic/version choices within each subject. Never merge multiple subjects into a single Exercise subject or question bank.
 - Each Exercise version contains exactly 10 questions. Create a descriptive topic label under the subject, with a sequential version number, e.g. English Exercise — Vocabulary 1, then English Exercise — Vocabulary 2.
 - When another Exercise is requested for the same subject/topic, inspect all existing versions and generate 10 new, nonduplicated questions. Avoid repeating the same questions across versions, even if the learning objective is the same; vary wording, examples, answers and scenarios while staying on topic.
 - Treat different weak areas as distinct Exercise topics with their own version numbering. Proofread answers and explanations before publishing.
