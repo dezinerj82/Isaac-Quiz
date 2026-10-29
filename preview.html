@@ -236,6 +236,10 @@ button:not(:disabled):active{transform:translateY(4px) scale(.985)!important;box
 .highlights-bubble{position:absolute;right:-7%;top:-13%;width:35%;height:34%;background-position:center;background-repeat:no-repeat;background-size:contain;display:flex;align-items:center;justify-content:center;transform:rotate(3deg);pointer-events:none}
 .highlights-bubble-text{font-size:clamp(11px,2vw,15px);font-weight:700;line-height:1.15;text-align:center;max-width:74%;color:#29335f}
 @media(max-width:540px){.highlights-bubble{right:-3%;top:-9%;width:38%}.highlights-bubble-text{font-size:clamp(9px,2.3vw,12px)}}
+
+.highlights-bubble{right:-5%;top:-10%;width:48%;height:45%;transform:none}
+.highlights-bubble-text{display:none}
+@media(max-width:540px){.highlights-bubble{right:-4%;top:-8%;width:46%;height:43%}}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><input id="studentName" class="student-name" maxlength="40" placeholder="Type in your name and press Enter" aria-label="Student name" onkeydown="if(event.key==='Enter'){this.blur();saveStudentName()}" onchange="saveStudentName()"><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" id="selectionBack" onclick="selectionBack()">Back</button><button class="back selection-home" onclick="home()">Home</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div><div id="subjectHighlights" class="highlights hidden"></div></section>
@@ -285,7 +289,7 @@ function scoreGroup(chapter){
  if(/^(add|subtract|multiply|divide|addition|subtraction|multiplication|division)$/i.test(c))return 'Four Basic Arithmetic Operations';
  return c||'Other';
 }
-function scoreBand(p){return p>=85?'high':p>=60?'medium':'low'}
+function scoreBand(p){return p>=70?'high':p>=50?'medium':'low'}
 function parseScoreReport(txt){
  const lines=txt.split(/\r?\n/);
  const field=k=>{const line=lines.find(line=>line.startsWith(k+':'));return line?line.slice(k.length+1).trim():''};
@@ -354,17 +358,15 @@ function renderHighlights(){
  }else if(all.length===1)remark='Great start!';
  const markerX=px,markerY=py;
  const markerTextY=Math.max(17,markerY-22);
- const bubbleFile=remarkClass==='down'?'bubble_red.png':remarkClass==='neutral'?'bubble_orange.png':'bubble_green.png';
- const bubbleColor=remarkClass==='down'?'#a23b32':remarkClass==='neutral'?'#965b10':'#1a7540';
+ const bubbleFile=pct>=70?'bubble_green.png':pct>=50?'bubble_orange.png':'bubble_red.png';
  const gauge='<svg viewBox="0 0 420 248" role="img" aria-label="Average score '+pct+' percent">'+
  '<image href="images/progress_bar.png" x="25" y="15" width="370" height="213" preserveAspectRatio="xMidYMid meet"/>'+
- (all.length?'<image href="images/progress_handle.png" x="45" y="40" width="330" height="330" preserveAspectRatio="xMidYMid meet" transform="rotate('+(pct*1.8-90).toFixed(2)+' 210 205) translate(0 -165)"/>'+
- '<circle cx="'+markerX.toFixed(1)+'" cy="'+markerY.toFixed(1)+'" r="8" fill="#fff" stroke="#47bd80" stroke-width="4"/>'+
- '<text x="'+Math.min(390,Math.max(30,markerX+(markerX>=210?27:-27))).toFixed(1)+'" y="'+(markerY-3).toFixed(1)+'" text-anchor="'+(markerX>=210?'start':'end')+'" fill="#29335f" font-size="23" font-weight="700">'+pct+'%</text>':'')+
- '<text x="32" y="242" text-anchor="middle" fill="#7b859d" font-size="16">0%</text><text x="388" y="242" text-anchor="middle" fill="#7b859d" font-size="16">100%</text></svg>';
+ (all.length?'<g transform="translate(210 205) rotate('+(-180+pct*1.8).toFixed(2)+')"><image href="images/progress_handle.png" x="-23" y="-35" width="184" height="70" preserveAspectRatio="xMidYMid meet"/></g>'+
+ '<text x="'+Math.min(390,Math.max(30,markerX+(markerX>=210?23:-23))).toFixed(1)+'" y="'+(markerY-3).toFixed(1)+'" text-anchor="'+(markerX>=210?'start':'end')+'" fill="#29335f" font-size="22" font-weight="700">'+pct+'%</text>':'')+
+ '</svg>';
 
  el.innerHTML='<h2>'+escapeHtml(activeStudentName()||'Student')+' Highlight</h2><p class="highlights-date">'+highlightDate()+'</p>'+
- '<div class="highlights-gauge">'+gauge+(remark?'<div class="highlights-bubble" style="background-image:url(images/'+bubbleFile+')"><span class="highlights-bubble-text" style="color:'+bubbleColor+'">'+escapeHtml(remark)+'</span></div>':'')+'</div>'+
+ '<div class="highlights-gauge">'+gauge+(all.length?'<div class="highlights-bubble" style="background-image:url(images/'+bubbleFile+')"></div>':'')+'</div>'+
  '<div class="highlights-stats"><div class="highlights-stat"><small>Total attempts</small><strong>'+all.length+'</strong></div>'+
  '<div class="highlights-stat high"><small>High score</small><strong>'+counts.high+'</strong></div>'+
  '<div class="highlights-stat medium"><small>Medium score</small><strong>'+counts.medium+'</strong></div>'+
