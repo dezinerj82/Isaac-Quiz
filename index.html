@@ -281,6 +281,9 @@ button:not(:disabled):active{transform:translateY(4px) scale(.985)!important;box
 .tile:active,.version:active,.back:active,.pill:active,.option:active,.answer:active,.next:active,.exit:active{
  box-shadow:var(--soft-pressed);
 }
+
+/* Knowledge breakdown rows sit flat within the shadowed outer frame. */
+.highlights .knowledge-row,.highlights .knowledge-head{box-shadow:none}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><input id="studentName" class="student-name" maxlength="40" placeholder="Type in your name and press Enter" aria-label="Student name" onkeydown="if(event.key==='Enter'){this.blur();saveStudentName()}" onchange="saveStudentName()"><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" id="selectionBack" onclick="selectionBack()">Back</button><button class="back selection-home" onclick="home()">Home</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div><div id="subjectHighlights" class="highlights hidden"></div></section>
