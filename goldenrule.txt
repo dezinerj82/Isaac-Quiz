@@ -41,6 +41,7 @@ EXAM TIMER AND RESULTS
 - Score report includes subject, quiz, score, date and incorrect question numbers/text. Avoid collecting unnecessary personal information.
 
 BACKUP AND RECOVERY
+- Subject booklist, module, chapter and exam-scope inventories belong in separate year-specific files under backup/, e.g. backup/PM3module.txt and, when PM4 sources arrive, backup/PM4module.txt. Do not duplicate these inventories in goldenrule.txt. Keep each year file current: reconcile new source materials, replace superseded entries and remove retired data instead of accumulating contradictions.
 - For a current source-and-assets backup, open https://github.com/dezinerj82/Isaac-Quiz, select Code > Download ZIP and store it safely. This contains the tracked project files and visual design but not Git history.
 - To preserve commit history too, use Git clone or a mirror clone and keep a separate secure copy. Never include access tokens/passwords.
 - Before restoring a backup, compare it with current main and avoid overwriting newer work blindly.
