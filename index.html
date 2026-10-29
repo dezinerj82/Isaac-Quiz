@@ -151,6 +151,13 @@
 .quizscreen>.topbar>.quizactions>#nextButton:disabled{background:#c6cad5!important;color:#fff!important}
 @media(max-width:700px){.quizscreen>.topbar{grid-template-columns:minmax(0,1fr) auto!important;row-gap:10px!important}.quizscreen>.topbar>.subjectstack{grid-column:1!important;grid-row:1!important}.quizscreen>.topbar>.timer.flip-timer{grid-column:2!important;grid-row:1!important;justify-self:end!important}.quizscreen>.topbar>.quizactions{grid-column:1/-1!important;grid-row:2!important;justify-self:stretch!important;justify-content:space-between!important;width:100%!important}}
 @media(max-width:380px){.quizscreen>.topbar>.subjectstack>.subjectpill{min-width:96px!important;padding:0 10px!important}.quizscreen>.topbar>.timer.flip-timer{padding:4px 7px!important}.quizscreen .flip-timer .flip-digit{width:20px!important;font-size:22px!important}}
+</style><style id="quiz-header-refinement">
+.quizscreen>.topbar>.subjectstack>.subjectpill{font-size:clamp(22px,2.4vw,28px)!important}
+.quizscreen>.topbar>.timer.flip-timer{background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important}
+.quizscreen .flip-timer .flip-digit{background:#609fcf!important;background-image:none!important;box-shadow:none!important;color:#fff!important}
+.quizscreen .flip-timer .flip-digit::after{content:none!important;display:none!important}
+.quizscreen .flip-timer .flip-colon{color:#609fcf!important}
+.quizscreen .flip-timer .flip-label{color:#5284bd!important}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" onclick="home()">‹ Back</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div></section>
