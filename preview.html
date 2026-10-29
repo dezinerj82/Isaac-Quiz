@@ -221,7 +221,7 @@ function renderChapterList(){
  }
  if(!selectedCategory){
   const categories=availableCategories(selectedLevel,subject);
-  container.innerHTML='<p class="level-note">'+escapeHtml(selectedLevel)+' — Choose a category</p><div class="chapter-items">'+categories.map(category=>'<button class="version" onclick="selectCategory(\''+category+'\')">'+category+'</button>').join('')+'</div>';
+  container.innerHTML='<div class="level-grid" role="group" aria-label="Choose quiz category">'+categories.map(category=>'<button class="level-button" onclick="selectCategory(\''+category+'\')">'+category+'</button>').join('')+'</div>';
   return;
  }
  const entries=availableEntries(selectedLevel,subject,selectedCategory);
