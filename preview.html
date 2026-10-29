@@ -272,6 +272,15 @@ button:not(:disabled):active{transform:translateY(4px) scale(.985)!important;box
 .highlights-stats{margin-top:0;margin-bottom:50px}
 .highlights h3{margin-top:0}
 
+
+/* Consistent, soft elevation across buttons and content boxes. */
+:root{--shadow:0 3px 9px #29335f12,0 8px 18px #29335f0b;--soft-elevation:0 3px 9px #29335f12,0 8px 18px #29335f0b;--soft-pressed:0 1px 4px #29335f12}
+.tile,.version,.back,.pill,.option,.answer,.next,.exit,.questioncard,.highlights,.highlights-stat,.knowledge-row,.knowledge-head,.student-name,.timer,.progressgroup{
+ box-shadow:var(--soft-elevation);
+}
+.tile:active,.version:active,.back:active,.pill:active,.option:active,.answer:active,.next:active,.exit:active{
+ box-shadow:var(--soft-pressed);
+}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><input id="studentName" class="student-name" maxlength="40" placeholder="Type in your name and press Enter" aria-label="Student name" onkeydown="if(event.key==='Enter'){this.blur();saveStudentName()}" onchange="saveStudentName()"><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" id="selectionBack" onclick="selectionBack()">Back</button><button class="back selection-home" onclick="home()">Home</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div><div id="subjectHighlights" class="highlights hidden"></div></section>
