@@ -1,70 +1,50 @@
-ISAAC QUIZ TIME — MASTER PROJECT COMMAND
+ISAAC QUIZ TIME — ACTIVE PROJECT COMMAND
 Updated: 2026-10-29
-GitHub repository: https://github.com/dezinerj82/Isaac-Quiz
-Live website: https://dezinerj82.github.io/Isaac-Quiz/
-Preview page: https://dezinerj82.github.io/Isaac-Quiz/preview.html
+Repository: https://github.com/dezinerj82/Isaac-Quiz
+Live site: https://dezinerj82.github.io/Isaac-Quiz/
 
-RESUME COMMAND — COPY INTO A NEW CHAT
-Continue my Isaac Quiz Time project directly in GitHub at dezinerj82/Isaac-Quiz. First read the latest root goldenrule.txt (all lowercase) and inspect the actual main-branch files before editing. Treat this file as the active project specification, preserve existing quizzes and approved designs, and follow my latest requests. Make changes directly to GitHub, not by generating design images. Update index.html and preview.html together, and maintain goldenrule.txt whenever the approved rules change. Check for syntax errors and regressions. Confirm commits before saying Completed; distinguish GitHub commits from live GitHub Pages deployment. If blocked, give a safe recovery action, not an unresolved conclusion.
+RESUME IN A NEW CHAT
+Continue my Isaac Quiz Time project directly in GitHub repository dezinerj82/Isaac-Quiz. Read the latest root goldenrule.txt and inspect the current main branch and relevant files before making changes. This file contains only active exam/quiz rules and how to work with me; the GitHub source files themselves are the authoritative backup for visual design. Preserve all existing functionality and content. Follow my newest instructions, update this file when operational or exam rules change, and never rebuild the project unnecessarily.
 
-PROJECT AND SOURCE OF TRUTH
-- GitHub Pages serves the root index.html single-page quiz app; its active CSS, JavaScript, and quiz data are embedded in that file. preview.html mirrors the production app.
-- Root subject pages redirect to index.html. css/ and js/ contain retained auxiliary files and are NOT the active production code. images/ contains Isaac PNG assets. backup/ contains legacy/offline files.
-- Never rebuild the site from scratch or discard existing questions, scoring, bookmarks, timer, navigation, or other approved features. Fetch current file versions/SHAs before editing. Verify GitHub commits, and verify the live website separately whenever possible.
-- This conversation is for GitHub website changes. Uploaded screenshots/images are visual references, not requests to generate images. Do not use image generation unless explicitly requested.
+HOW TO WORK WITH ME
+- This chat is for making actual GitHub website changes, not generating design images. Screenshots are references for GitHub edits; do not generate images unless explicitly requested.
+- Work directly on the repository. Inspect existing code and dependencies before editing, make the smallest safe changes, and preserve all approved functionality and exam questions.
+- Production app: root index.html, with active embedded CSS, JavaScript and quiz data. Keep root preview.html synchronized with index.html. Other subject pages redirect to the app. css/ and js/ are retained auxiliary files; images/ holds required assets; backup/ holds legacy/offline files.
+- Visual design and appearance are stored in the actual GitHub HTML/CSS/assets, NOT described or duplicated in this command file. Do not re-create visual design from memory or from this text.
+- Fetch the latest main branch and file SHAs; make and commit changes safely. Verify saved contents, JavaScript syntax and affected behavior as far as tools allow. Check for regressions, especially quiz launch, answer submission, Next/Resume, bookmarks, timer, scoring and mobile responsiveness.
+- A successful commit is NOT proof that GitHub Pages has deployed or that the website was browser-tested. Do not say the live site is Ready without confirming deployment.
+- On successful completion and verification of the requested GitHub task, respond ONLY with the green badge: Completed. If the task fails and requires user action, respond with a red badge: Failed - action required, plus brief safe repair options. Always pursue the safest available fix; never leave an error without a clear recovery plan.
+- Keep goldenrule.txt current and consolidated. Remove superseded instructions rather than accumulating contradictory historical rules. Do not add purely visual CSS/layout/color/font descriptions here.
 
-HOME, LEVELS, AND CHAPTERS
-- Home page has six subject tiles: English, Korean, Malay, Math, Science, PJPK.
-- On entering a subject, show ONLY school-level buttons for levels that have real, playable quiz content. Supported levels: PM3, PM4, PM5, PM6, SC1, SC2, SC3, SC4, SC5. Never show PM1 or PM2.
-- Initially show available level buttons and 'Choose your level on top'. If none exist, show 'No quizzes available yet.'
-- Selecting a level shows only its playable chapter or revision buttons. Never show empty level buttons, disabled chapter placeholders, or chapters without implemented question data and launch logic. Reset selected level on re-entering a subject.
-- Existing Korean and Science Exam Revision banks are 30 questions each and belong to PM3. Generate question-count labels from actual bank length.
-- Future Science chapter plan begins with Chapter 1 — Scientific Skills; later chapters require the actual textbook. Korean chapter structure likewise requires the actual textbook. Plans/placeholders are NOT visible menu buttons. Do not invent textbook chapters or treat old exam-revision questions as chapter-specific quizzes.
-- When textbooks are provided, review the supplied pages and learning objectives, confirm scope where needed, and build accurate level/subject/chapter-specific question banks. Only then expose the new menu buttons.
+EXAM CONTENT AND LEVEL RULES
+- Available school levels are PM3, PM4, PM5, PM6, SC1, SC2, SC3, SC4 and SC5. PM1 and PM2 are permanently excluded.
+- Show a school-level option only when that subject/level has at least one real playable quiz. Show a chapter/revision option only when its question data and launch behavior exist. No empty buttons or unfinished placeholders.
+- On entering a subject, initially show the available levels with 'Choose your level on top'. If none have content, show 'No quizzes available yet.' Selecting a level reveals only its available chapter/revision quizzes; reset the selection when entering a subject again.
+- Existing Korean and Science PM3 Exam Revision question banks remain separate from future chapter-specific quizzes. Determine question counts from the actual data, not a hardcoded label.
+- Future Science chapter content starts with Chapter 1 — Scientific Skills; other Science chapters and all Korean chapter names/content require the user's actual textbooks. Do not invent syllabus, objectives or textbook content, and do not pass revision questions off as chapter-specific questions.
+- When textbooks are supplied, inspect their chapters and learning objectives, confirm unclear scope, and create accurate level/subject/chapter-specific question banks before exposing new chapter buttons.
+- Write accurate age-appropriate questions with clear answers, meaningful distractors and explanations. Avoid unsupported syllabus claims, ambiguous choices and repetitive answer patterns. Default full revision volume is 30 questions unless the user specifies otherwise.
+- Supported question types include multiple choice, selectable blanks, true/false, ordering, matching, drag/drop, text entry where requested and genuine picture-based questions. Korean and Science PM3 Exam Revision are currently no-typing, suitable for answering while travelling.
+- Do not show unrelated emoji, decorative pictures or answer hints under questions. Genuine required question pictures must be relevant. All inputs, answers and drop zones must work within the question's available space, wrapping only when necessary. This is a functional responsiveness rule, not a visual specification.
+- Choice taps submit answers immediately. Typed answers use Enter where enabled. Ordering submits once all items are placed; matching submits once all connections are made. Ordering supports drag/drop and tapping. Empty ordering zones may show instructions, but those instructions disappear once items are selected. Preserve Undo until submission.
+- Correct/wrong feedback and explanations appear only after answer submission. Reviewing a previous answered question must not resubmit it or change its score.
 
-VISUAL DESIGN AND HEADER
-- White, clean, friendly responsive layout; pastel rainbow 'Quiz time' branding, rounded Fredoka/Nunito-style typography, readable dark navy question text and pastel controls.
-- Subject pill has larger font, generous horizontal padding/width and unchanged 52px height.
-- Align subject pill, compact timer, Exit and Next buttons with complementary colors and consistent 52px visual height on desktop. On narrower screens, subject/timer may occupy row one and navigation controls row two, without overlap.
-- Timer has six separate blue digit cards matching the Exit button, blue colons and HR/MIN/SEC labels; NO pink/lavender outer background, NO outer frame/shadow, and NO horizontal split lines through digits. Keep the timer compact and rounded. Override inherited legacy timer styling as necessary.
-- Question x out of x appears above the question card at top left. Bookmark checkbox appears nearby. Progress/remaining indicators and controls must remain readable.
+BOOKMARK, NEXT AND RESUME BEHAVIOR
+- Next is normally disabled until the current question is answered. Bookmarking an unanswered question enables Next, allowing it to be skipped without scoring it wrong. Unanswered skipped questions remain available to complete later, and the quiz must not finish while unanswered questions remain.
+- Bookmarks can be added/removed and opened from the bookmark list. The list auto-closes after approximately three seconds or an outside click; clicking inside it must not close it prematurely.
+- Resume appears only when reviewing a previous bookmarked question and returns to the saved next unanswered/continuation position. Preserve the original answer and score snapshots during review.
+- Exit returns to the quiz selection menu. Next advances according to answered/bookmarked state without skipping unreviewed work or prematurely ending the quiz.
 
-QUESTIONS, INPUTS, AND FEEDBACK
-- Every question, answer button, text field, matching selector, drag/drop area, and any genuinely required question picture fits comfortably within the available question-card width. Default to using available horizontal space; wrap to the next row only when space is insufficient. Prevent overflow on desktop and mobile.
-- Do not show unrelated emoji, decorative prompt pictures, or answer hints beneath question text. If a future question genuinely needs a picture, use an appropriate image and size/position it responsively inside the question card.
-- MCQ answers submit immediately when tapped. Typing (where enabled) submits with Enter. Sequence/order submits after all steps are placed; matching submits after all connections are made. Drag/drop and tap-to-order both work. Korean and Science PM3 exam revision currently use no typing for van-friendly use.
-- For sequence questions, make the drop area and options full-width and comfortably spaced. Show 'Drag or tap the steps below in order.' only while the selected sequence is empty; remove the instruction once items are placed. Retain Undo until submission.
-- Correct/wrong feedback and explanations appear only AFTER submitting the answer, without leaking answers or hints beforehand. Preserve snapshots and score integrity when reviewing earlier questions.
-- Next normally activates only after submitting. Exception: bookmarking an unanswered question activates Next, allowing it to be skipped without counting as incorrect. Skipped unanswered questions remain available to answer later; before finishing, return to outstanding unanswered questions rather than prematurely completing the quiz. Exit returns to the subject quiz list.
-
-BOOKMARKS, RESUME, AND REVIEW
-- Bookmark checkbox toggles the current question; bookmark list button appears when bookmarks exist. List shows bookmarked question numbers and allows navigation.
-- Bookmark list closes after about three seconds or an outside click, but clicking INSIDE the list must not close it prematurely.
-- Resume is hidden during normal progression and appears only when reviewing a previous bookmarked question, returning to the saved next unanswered/continuation question. Reviewing an already-answered question must not alter the score or answer snapshot.
-- Keep navigation, bookmark skips, and completion behavior consistent when the final question is reached.
-
-TIMER AND RESULTS
-- Total countdown: three minutes per question. At five minutes remaining show dismissible warning using images/Isaac time out.png; countdown continues.
-- Result image by score: 90%+ images/Isaac high score.png; 70%+ images/Isaac middle score.png; 50%+ images/Isaac low score.png; below 50% images/Isaac fail.png.
-- Results include Try Again, Back Home, Download Score. Score text export lists subject, quiz, score, date and incorrect question numbers/text, without collecting personal data.
-
-QUESTION QUALITY
-- Accurate, age-appropriate questions, meaningful distractors and explanations; avoid repetitive answers or unsupported textbook coverage.
-- Supported types: MCQ, selectable blanks, true/false, sequence, matching, drag/drop, typing where appropriate, and genuine picture questions. Prefer a balanced mixture when requested. Default to 30 questions for a full revision bank unless instructed otherwise.
-
-SAFE GITHUB WORKFLOW
-1. Fetch the latest main-branch files, paths and SHAs, inspect relevant code and dependencies, and identify the smallest safe change.
-2. Apply edits to index.html and preview.html together, keep their contents synchronized, and update this master file when project rules change. Avoid piling on contradictory old instructions.
-3. Check JavaScript syntax, CSS specificity, menu/navigation, bookmark/Resume/Next, answer submission, timer, scoring and responsive widths as far as tools permit.
-4. Commit the changes to GitHub and confirm the saved file contents. GitHub Pages publication and browser appearance require separate verification; do not call the live site Ready without deployment verification.
-5. When the requested task is successfully committed and verified, respond ONLY with the green badge 'Completed'. If blocked and user action is necessary, respond with red badge 'Failed - action required' and short, safe repair choices. Never leave a broken project without a concrete recovery plan.
+EXAM TIMER AND RESULTS
+- Time allowance: three minutes per question. At five minutes remaining, show a dismissible time warning while countdown continues.
+- Preserve score calculation, results screen, Try Again, Back Home and Download Score.
+- Score report includes subject, quiz, score, date and incorrect question numbers/text. Avoid collecting unnecessary personal information.
 
 BACKUP AND RECOVERY
-- To back up the COMPLETE GitHub repository: open https://github.com/dezinerj82/Isaac-Quiz, choose Code > Download ZIP, and save the ZIP in a safe location. This includes tracked source, quiz data, images and goldenrule.txt as of that download, but NOT full Git commit history.
-- To back up full commit history as well, use git clone https://github.com/dezinerj82/Isaac-Quiz.git or git clone --mirror https://github.com/dezinerj82/Isaac-Quiz.git on a computer with Git installed. Keep a separate offline copy and optionally cloud storage.
-- For recovery, restore from the backed-up files to the correct repository/branch after reviewing differences. Do not overwrite newer work blindly. Never store passwords or access tokens in the backup.
-- A new chat should read this file from GitHub before resuming; a downloaded ZIP alone is not proof the live deployment has succeeded.
+- For a current source-and-assets backup, open https://github.com/dezinerj82/Isaac-Quiz, select Code > Download ZIP and store it safely. This contains the tracked project files and visual design but not Git history.
+- To preserve commit history too, use Git clone or a mirror clone and keep a separate secure copy. Never include access tokens/passwords.
+- Before restoring a backup, compare it with current main and avoid overwriting newer work blindly.
+- A future chat must fetch the latest goldenrule.txt and current GitHub files; do not rely on a stale saved prompt or screenshots.
 
-CURRENT WORKING STATE
-- Korean and Science PM3 Exam Revision are the current populated quizzes. Other levels/chapters appear only after playable content is created.
-- Continue applying the user's new quiz design and content requests without losing previous functionality.
+CURRENT CONTENT
+- Korean and Science PM3 Exam Revision quizzes exist. Other chapter/level options must be shown only after playable question content has actually been added.
