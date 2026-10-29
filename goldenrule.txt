@@ -32,7 +32,7 @@ EXAM CONTENT AND LEVEL RULES
 BOOKMARK, NEXT AND RESUME BEHAVIOR
 - Next is normally disabled until the current question is answered. Bookmarking an unanswered question enables Next, allowing it to be skipped without scoring it wrong. Unanswered skipped questions remain available to complete later, and the quiz must not finish while unanswered questions remain.
 - Bookmarks can be added/removed and opened from the bookmark list. The list auto-closes after approximately three seconds or an outside click; clicking inside it must not close it prematurely.
-- Resume appears only when reviewing a previous bookmarked question and returns to the saved next unanswered/continuation position. Preserve the original answer and score snapshots during review.
+- Resume appears only when reviewing a previous bookmarked question. When clicked, Resume finds the first question that has not been answered (including previously bookmarked/skipped questions) and opens it. If every question has been answered, Resume automatically opens the score/results page. Preserve original answer and score snapshots during review.
 - Exit returns to the quiz selection menu. Next advances according to answered/bookmarked state without skipping unreviewed work or prematurely ending the quiz.
 
 EXAM TIMER AND RESULTS
