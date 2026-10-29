@@ -40,3 +40,6 @@ Keep subject, compact rounded lavender flip-clock, Exit, and Next visually align
 
 HEADER REFINEMENT
 The subject pill uses a larger font. The timer has no outer background, border or shadow; its digits are solid blue matching the Exit button, with no horizontal split lines. Timer colons and HR/MIN/SEC labels also use the blue theme. Preserve the compact header layout and functionality.
+
+SUBJECT PILL SPACING
+Keep the subject name pill height at 52px, but allow a wider button with generous left/right breathing room for longer subject names.
