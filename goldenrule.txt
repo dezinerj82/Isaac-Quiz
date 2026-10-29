@@ -34,3 +34,6 @@ Wait for the user's textbook chapter materials and their additional exam design 
 
 TIMER VISUAL DESIGN
 The quiz countdown is a compact purple flip-clock without a pink background, outer frame, or outer shadow; explicitly override legacy .timer styles using .quizscreen .topbar .timer.flip-timer so the pink gradient cannot reappear with separate HR, MIN and SEC double-digit panels, horizontal card splits, and readable labels. Maintain existing 3-minute-per-question timing and five-minute warning, including responsive mobile layout. The six digit panels update in place each second.
+
+QUIZ HEADER DESIGN
+Keep subject, compact rounded lavender flip-clock, Exit, and Next visually aligned at 52px height with coordinated purple and blue colors. On narrow screens, subject/timer share the first row and Exit/Next the second. Preserve button actions and countdown behavior.
