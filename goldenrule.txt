@@ -43,3 +43,6 @@ The subject pill uses a larger font. The timer has no outer background, border o
 
 SUBJECT PILL SPACING
 Keep the subject name pill height at 52px, but allow a wider button with generous left/right breathing room for longer subject names.
+
+QUESTION CONTENT AND BOOKMARK RULES
+Do not display emoji or decorative prompt pictures below quiz questions. Question text and answer options alone should convey the question. For sequence/drag-and-drop, use the full question answer-area width, keep the drop zone comfortable and remove the persistent 'Drag here or tap in order:' prefix; show instructions only while the drop area is empty. Resume is visible only while reviewing an earlier already-answered bookmarked question; it returns to the saved next unanswered question. Preserve answer feedback and existing question data.
