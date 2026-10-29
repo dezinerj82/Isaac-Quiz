@@ -248,7 +248,7 @@ function closeBookmarkList(){clearTimeout(bookmarkCloseTimer);bookmarkCloseTimer
 function toggleBookmarkList(){const list=$('bookmarkList');const opening=list.classList.contains('hidden');closeBookmarkList();if(opening){list.classList.remove('hidden');bookmarkCloseTimer=setTimeout(closeBookmarkList,3000)}}
 document.addEventListener('pointerdown',function(event){const list=document.getElementById('bookmarkList');if(list&&!list.classList.contains('hidden')&&!event.target.closest('#bookmarkListButton')&&!event.target.closest('#bookmarkList'))closeBookmarkList()});
 function goBookmark(i){if(!bookmarks.has(i))return;if(!bookmarkView)resumeIndex=index;bookmarkView=i<resumeIndex;index=i;$('bookmarkList').classList.add('hidden');render()}
-function resumeQuiz(){bookmarkView=false;index=resumeIndex;$('bookmarkList').classList.add('hidden');render()}
+function resumeQuiz(){bookmarkView=false;$('bookmarkList').classList.add('hidden');const pending=questions.findIndex((q,i)=>!answerSnapshots[i]);if(pending<0){finish();return}index=pending;resumeIndex=pending;render()}
 function dismissTimeWarning(){$('timeWarning').classList.add('hidden')}
 function finish(){clearInterval(timerHandle);dismissTimeWarning();$('score').textContent=score;$('total').textContent=questions.length;const pct=questions.length?score/questions.length:0;const img=pct>=.9?'images/Isaac high score.png':pct>=.7?'images/Isaac middle score.png':pct>=.5?'images/Isaac low score.png':'images/Isaac fail.png';$('resultIsaac').src=img;show('results')}
 function restart(){start(version)}
