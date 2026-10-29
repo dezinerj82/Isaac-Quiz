@@ -264,6 +264,13 @@ button:not(:disabled):active{transform:translateY(4px) scale(.985)!important;box
 
 .highlights-bubble{right:auto!important;transform:translate(-50%,-50%);width:44%;height:44%;z-index:2;transition:left 1.35s ease,top 1.35s ease}
 .highlights-gauge svg{overflow:visible}
+
+/* Final highlight spacing — placed after all earlier highlight overrides. */
+.highlights h2{margin-bottom:30px}
+.highlights-date{margin-bottom:0}
+.highlights-gauge{margin:50px auto 50px;max-width:520px}
+.highlights-stats{margin-top:0;margin-bottom:50px}
+.highlights h3{margin-top:0}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><input id="studentName" class="student-name" maxlength="40" placeholder="Type in your name and press Enter" aria-label="Student name" onkeydown="if(event.key==='Enter'){this.blur();saveStudentName()}" onchange="saveStudentName()"><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" id="selectionBack" onclick="selectionBack()">Back</button><button class="back selection-home" onclick="home()">Home</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div><div id="subjectHighlights" class="highlights hidden"></div></section>
