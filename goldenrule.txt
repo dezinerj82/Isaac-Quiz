@@ -91,3 +91,5 @@ PM3 TRANSITION EXCEPTION (UNTIL 2026-12-03)
 - PM3 ends on 2026-12-03. Until then, focus quiz content work on Korean, Malay and Math only.
 - PM3 is an exceptional limited-source phase: the available booklist names books, but scanned textbook/workbook content is not available. Use only reliable available materials and established PM3 context; do not pretend to have read missing books or invent specific textbook chapters. Ask for source details when essential.
 - The biweekly automated Daily Quiz creation and proof-check schedule starts with PM4 on 2027-01-03; do not apply that schedule to PM3. PM3 work is by request, not automatic daily generation.
+
+- Post-answer English translations: For Malay, PJPK, and History (History begins PM4), show a smaller English translation directly below the question and smaller translations on the right of answer options only after the answer is submitted/revealed. Never translate the existing green-check/red-cross feedback symbols or their adjacent explanation text. Keep all other quiz behaviour unchanged. Each question needs verified English translation data; never show placeholder or invented translations.
