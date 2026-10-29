@@ -46,3 +46,6 @@ Keep the subject name pill height at 52px, but allow a wider button with generou
 
 QUESTION CONTENT AND BOOKMARK RULES
 Do not display emoji or decorative prompt pictures below quiz questions. Question text and answer options alone should convey the question. For sequence/drag-and-drop, use the full question answer-area width, keep the drop zone comfortable and remove the persistent 'Drag here or tap in order:' prefix; show instructions only while the drop area is empty. Resume is visible only while reviewing an earlier already-answered bookmarked question; it returns to the saved next unanswered question. Preserve answer feedback and existing question data.
+
+BOOKMARK SKIP AND RESPONSIVE QUESTION LAYOUT
+When an unanswered question is bookmarked, enable Next so it may be skipped without scoring it as wrong. Preserve it for later, and when the end is reached return to unanswered questions before completing the quiz. Bookmark review of earlier questions shows Resume, returning to the saved next unanswered position. Keep all answer buttons, typing fields, matching and ordering/drag areas inside the full available question card width; wrap to the next line only when space is insufficient. Any genuine required question images should be responsive, fit inside the question card, and never be replaced with unrelated emoji.
