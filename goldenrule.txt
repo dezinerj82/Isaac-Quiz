@@ -36,7 +36,7 @@ BOOKMARK, NEXT AND RESUME BEHAVIOR
 - Exit returns to the quiz selection menu. Next advances according to answered/bookmarked state without skipping unreviewed work or prematurely ending the quiz.
 
 EXAM TIMER AND RESULTS
-- Existing quiz time allowance: three minutes per question; future daily quiz duration is 30 minutes per subject and future exam revision duration is 90 minutes per subject, applied by quiz type without breaking existing quizzes. At five minutes remaining, show a dismissible time warning while countdown continues.
+- Existing PM3 quiz timer uses three minutes per question. PM4+ Daily Quiz: 30 questions, 30 minutes per subject; Exam Revision: 30 questions, 90 minutes per subject. Apply timer by quiz type without changing existing PM3 quiz behavior. At five minutes remaining, show a dismissible time warning while countdown continues.
 - Preserve score calculation, results screen, Try Again, Back Home and Download Score.
 - Score report includes subject, quiz, score, date and incorrect question numbers/text. Avoid collecting unnecessary personal information.
 
@@ -52,20 +52,23 @@ QUIZ SOURCE MATERIALS AND EXAM PAPER TRANSCRIPTION
 - Read source material carefully and cross-check scans against exam scope and books. For marked exam papers, reconstruct clean questions and answer choices without revealing pupil selections, teacher corrections, or marking. Do not copy handwritten marks into the quiz. Where scans are unclear, infer only when supported by context, flag uncertainty for review, and never silently invent an answer or claim certainty.
 - PM3 source material is limited. PM4 onward should use the richer scope, booklist, textbooks, workbooks and completed past papers actually supplied. Proofread source questions, choices and correct answers; local textbooks may contain errors.
 
-DAILY QUIZ — STARTING 2027-01-03
-- Create on Sunday, Monday, Tuesday, Wednesday and Thursday at 7:00 PM Malaysia time (Asia/Kuala_Lumpur), beginning 2027-01-03, for next-day revision, when the necessary textbook content is available. Do not fabricate missing source content.
-- Daily quizzes are textbook-based, organized by subject and learning topic. Each subject may have multiple textbooks/workbooks whose chapter titles differ. Read their actual chapter content, identify overlapping learning objectives, consolidate equivalent topics across books, and assign an accurate user-friendly chapter label.
-- May adapt verified textbook questions/answers and write new questions. Independently proofread facts, wording, answer choices and explanations, correcting source errors rather than copying them.
-- Each Daily Quiz contains exactly 10 questions per chapter of each subject, with 30 minutes per subject as specified. Chapter quizzes are individual 10-question quizzes, not ten separate sets. Keep the duration requirement separate from the question count and clarify subject-level timing implementation if multiple chapters are assigned together.
-- After any quiz deployment, arrange a follow-up prompt to proof-check the deployed questions, answers, labels and functionality so the quiz is ready the next day. Do not report the quiz deployed if GitHub Pages is not verified.
+DAILY QUIZ — BIWEEKLY FROM 2027-01-03 (PM4 ONWARD)
+- Prepare and deploy once every two weeks on Sunday at 7:00 PM Malaysia time, anchored to Sunday 2027-01-03. The next preparation is 2027-01-17, then every 14 days. The quiz is intended for repeated practice during the following two weeks. This replaces the former Sunday–Thursday daily creation schedule.
+- One new 30-question quiz per subject each two-week cycle; duration is 30 minutes per subject. First cycle: 30 questions on the opening chapter. Subsequent cycles: 25 fresh questions on the new chapter plus 5 fresh, nonduplicated review questions from the preceding cycle's chapter. Do not reuse exact question sentences or answer options merely to fill review slots.
+- Plan the chapter sequence across roughly ten months (~22 two-week cycles), one new chapter per subject per cycle. The actual number of subjects and chapters depends on the supplied school booklist and learning content. Do not invent subjects or chapter counts; if there are more topics than cycles, consolidate related objectives carefully, without skipping essential content.
+- For each subject, inspect the booklist and count modules/chapters/lesson units across its relevant textbooks and workbooks. Exclude books whose content requires physical handwriting, drawing or other hand-on-paper tasks that do not translate meaningfully to an onscreen quiz. Identify overlapping topics and group equivalent learning objectives across books into subject-level chapters with accurate, user-friendly labels, rather than copying each book's module divisions verbatim.
+- Example: Get Smart Plus 3 Student Book has 10 modules, Workbook has 10 modules, and Grammar Makes Easy Year 3 has 17 major divisions spanning 95 lesson units. These are 37 major divisions before merging, not automatically 37 unique subject chapters; align actual overlapping content and fit appropriate chapters to the available cycles. Exclude Rampaian Praktis Mantap Cursive Writing Year 3 handwriting exercises.
+- Stay close to verified textbook learning content and exam-style questions found in books. Adapt accurate book questions or write original questions, examples and short stories where needed for sufficient variety, provided the tested skill remains within the relevant learning objectives. Proofread and correct errors in locally produced books.
+- Arrange a proof-check follow-up after each scheduled deployment, before the next practice period, to check question wording, choices, correct answers, explanations, chapter alignment and functionality. Never claim live deployment is confirmed without verification.
 
 EXAM REVISION — ONLY WHEN REQUESTED
 - Three school exams annually: Assessment, Middle Exam and Final Exam. Exam dates vary yearly; never schedule automatic exam revision generation.
 - Assessment revision: use the teacher-provided exam scope and relevant textbook/workbook material (no prior assessment paper yet).
 - Middle Exam revision: use the current exam scope, textbooks/workbooks and the completed Assessment paper.
 - Final Exam revision: use the current exam scope, textbooks/workbooks and completed Assessment and Middle Exam papers.
-- Each Exam Revision file contains exactly 30 questions per subject, with 1½ hours (90 minutes) per subject. Create one revision file/set per requested subject and exam, only when the user asks; verify scope and sources before publishing.
-- Distinguish daily quiz time limits from exam revision time limits; existing three-minutes-per-question revision logic may need a scoped adjustment when new content is introduced, without disrupting current quizzes.
+- Each Exam Revision file contains exactly 30 questions per subject, with 1½ hours (90 minutes) per subject. Create one revision file/set per requested subject and exam only when the user asks, after the teacher distributes the exam scope (typically about a month before the exam). Map the exam scope to the booklist and relevant textbook/workbook learning content; verify sources before publishing.
+- Exam Revision questions must not duplicate Daily Quiz questions verbatim. They may assess the same objective or use the same question format, but must use different sentences, examples, stories, values and answer choices as appropriate. Original questions are encouraged when educationally equivalent and within the exam scope.
+- Keep Daily Quiz (30 minutes for 30 questions) and Exam Revision (90 minutes for 30 questions) timers separate. Preserve current PM3 behavior until a deliberate scoped implementation change.
 
 CURRENT CONTENT
 - Korean and Science PM3 Exam Revision quizzes exist. Other chapter/level options must be shown only after playable question content has actually been added.
@@ -74,4 +77,4 @@ CURRENT CONTENT
 PM3 TRANSITION EXCEPTION (UNTIL 2026-12-03)
 - PM3 ends on 2026-12-03. Until then, focus quiz content work on Korean, Malay and Math only.
 - PM3 is an exceptional limited-source phase: the available booklist names books, but scanned textbook/workbook content is not available. Use only reliable available materials and established PM3 context; do not pretend to have read missing books or invent specific textbook chapters. Ask for source details when essential.
-- The regular automated Daily Quiz creation and proof-check schedule starts with PM4 on 2027-01-03; do not apply that schedule to PM3. PM3 work is by request, not automatic daily generation.
+- The biweekly automated Daily Quiz creation and proof-check schedule starts with PM4 on 2027-01-03; do not apply that schedule to PM3. PM3 work is by request, not automatic daily generation.
