@@ -36,7 +36,7 @@ BOOKMARK, NEXT AND RESUME BEHAVIOR
 - Exit returns to the quiz selection menu. Next advances according to answered/bookmarked state without skipping unreviewed work or prematurely ending the quiz.
 
 EXAM TIMER AND RESULTS
-- Time allowance: three minutes per question. At five minutes remaining, show a dismissible time warning while countdown continues.
+- Existing quiz time allowance: three minutes per question; future daily quiz duration is 30 minutes per subject and future exam revision duration is 90 minutes per subject, applied by quiz type without breaking existing quizzes. At five minutes remaining, show a dismissible time warning while countdown continues.
 - Preserve score calculation, results screen, Try Again, Back Home and Download Score.
 - Score report includes subject, quiz, score, date and incorrect question numbers/text. Avoid collecting unnecessary personal information.
 
@@ -45,6 +45,27 @@ BACKUP AND RECOVERY
 - To preserve commit history too, use Git clone or a mirror clone and keep a separate secure copy. Never include access tokens/passwords.
 - Before restoring a backup, compare it with current main and avoid overwriting newer work blindly.
 - A future chat must fetch the latest goldenrule.txt and current GitHub files; do not rely on a stale saved prompt or screenshots.
+
+
+QUIZ SOURCE MATERIALS AND EXAM PAPER TRANSCRIPTION
+- The user will supply exam scope (usually DOCX), scanned completed past exam papers (with pencil answers and teacher marks), scanned textbooks/workbooks, and scanned school booklists listing the books used per subject.
+- Read source material carefully and cross-check scans against exam scope and books. For marked exam papers, reconstruct clean questions and answer choices without revealing pupil selections, teacher corrections, or marking. Do not copy handwritten marks into the quiz. Where scans are unclear, infer only when supported by context, flag uncertainty for review, and never silently invent an answer or claim certainty.
+- PM3 source material is limited. PM4 onward should use the richer scope, booklist, textbooks, workbooks and completed past papers actually supplied. Proofread source questions, choices and correct answers; local textbooks may contain errors.
+
+DAILY QUIZ — STARTING 2027-01-03
+- Create on Sunday, Monday, Tuesday, Wednesday and Thursday at 7:00 PM Malaysia time (Asia/Kuala_Lumpur), beginning 2027-01-03, for next-day revision, when the necessary textbook content is available. Do not fabricate missing source content.
+- Daily quizzes are textbook-based, organized by subject and learning topic. Each subject may have multiple textbooks/workbooks whose chapter titles differ. Read their actual chapter content, identify overlapping learning objectives, consolidate equivalent topics across books, and assign an accurate user-friendly chapter label.
+- May adapt verified textbook questions/answers and write new questions. Independently proofread facts, wording, answer choices and explanations, correcting source errors rather than copying them.
+- User specification: '10 set of questions, 30 minutes per subject'. Preserve this wording until clarified whether '10 set' means ten questions or ten separate sets. Do not assume either interpretation or change the approved current timer globally without explicit scope confirmation.
+- After any quiz deployment, arrange a follow-up prompt to proof-check the deployed questions, answers, labels and functionality so the quiz is ready the next day. Do not report the quiz deployed if GitHub Pages is not verified.
+
+EXAM REVISION — ONLY WHEN REQUESTED
+- Three school exams annually: Assessment, Middle Exam and Final Exam. Exam dates vary yearly; never schedule automatic exam revision generation.
+- Assessment revision: use the teacher-provided exam scope and relevant textbook/workbook material (no prior assessment paper yet).
+- Middle Exam revision: use the current exam scope, textbooks/workbooks and the completed Assessment paper.
+- Final Exam revision: use the current exam scope, textbooks/workbooks and completed Assessment and Middle Exam papers.
+- User specification: '30 set of questions, 1½ hour per subject, 1 set only'. Preserve as stated until the meaning of '30 set of questions' is clarified. Generate only upon the user's request; verify scope and sources before publishing.
+- Distinguish daily quiz time limits from exam revision time limits; existing three-minutes-per-question revision logic may need a scoped adjustment when new content is introduced, without disrupting current quizzes.
 
 CURRENT CONTENT
 - Korean and Science PM3 Exam Revision quizzes exist. Other chapter/level options must be shown only after playable question content has actually been added.
