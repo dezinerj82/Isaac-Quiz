@@ -69,3 +69,9 @@ EXAM REVISION — ONLY WHEN REQUESTED
 
 CURRENT CONTENT
 - Korean and Science PM3 Exam Revision quizzes exist. Other chapter/level options must be shown only after playable question content has actually been added.
+
+
+PM3 TRANSITION EXCEPTION (UNTIL 2026-12-03)
+- PM3 ends on 2026-12-03. Until then, focus quiz content work on Korean, Malay and Math only.
+- PM3 is an exceptional limited-source phase: the available booklist names books, but scanned textbook/workbook content is not available. Use only reliable available materials and established PM3 context; do not pretend to have read missing books or invent specific textbook chapters. Ask for source details when essential.
+- The regular automated Daily Quiz creation and proof-check schedule starts with PM4 on 2027-01-03; do not apply that schedule to PM3. PM3 work is by request, not automatic daily generation.
