@@ -229,6 +229,13 @@ button:not(:disabled):active{transform:translateY(4px) scale(.985)!important;box
 .knowledge-track{height:12px}
 .knowledge-percent{font-size:clamp(16px,2.8vw,20px)}
 @media(max-width:540px){.highlights{padding:18px 11px}.highlights-remark{max-width:105px;padding:7px;font-size:12px}.highlights-stats{gap:5px}.knowledge-head{gap:7px}}
+
+/* Uploaded progress graphics */
+.highlights-gauge{overflow:visible}
+.highlights-gauge svg{overflow:visible}
+.highlights-bubble{position:absolute;right:-7%;top:-13%;width:35%;height:34%;background-position:center;background-repeat:no-repeat;background-size:contain;display:flex;align-items:center;justify-content:center;transform:rotate(3deg);pointer-events:none}
+.highlights-bubble-text{font-size:clamp(11px,2vw,15px);font-weight:700;line-height:1.15;text-align:center;max-width:74%;color:#29335f}
+@media(max-width:540px){.highlights-bubble{right:-3%;top:-9%;width:38%}.highlights-bubble-text{font-size:clamp(9px,2.3vw,12px)}}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><input id="studentName" class="student-name" maxlength="40" placeholder="Type in your name and press Enter" aria-label="Student name" onkeydown="if(event.key==='Enter'){this.blur();saveStudentName()}" onchange="saveStudentName()"><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" id="selectionBack" onclick="selectionBack()">Back</button><button class="back selection-home" onclick="home()">Home</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div><div id="subjectHighlights" class="highlights hidden"></div></section>
@@ -335,7 +342,7 @@ function renderHighlights(){
  all.forEach(a=>{const k=scoreGroup(a.chapter);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(100*a.score/a.total)});
  const rows=[...groups].sort((a,b)=>a[0].localeCompare(b[0])).map(([chapter,scores])=>{
   const avg=Math.round(scores.reduce((a,b)=>a+b,0)/scores.length);
-  return '<div class="knowledge-row"><div class="knowledge-head"><span class="knowledge-label">'+escapeHtml(chapter)+'</span><div class="knowledge-track"><div class="knowledge-fill" style="width:'+avg+'%"></div></div><span class="knowledge-percent">'+avg+'%</span></div></div>';
+  return '<div class="knowledge-row"><div class="knowledge-head"><span class="knowledge-label">'+escapeHtml(chapter)+'</span><div class="knowledge-track"><div class="knowledge-fill" style="width:'+avg+'%;background:'+['#35cfa0','#5facd3','#ffc349','#9579d5','#ef8a79'][[...groups.keys()].indexOf(chapter)%5]+'"></div></div><span class="knowledge-percent">'+avg+'%</span></div></div>';
  }).join('');
  let remark='',remarkClass='neutral';
  if(all.length>=2){
@@ -347,13 +354,17 @@ function renderHighlights(){
  }else if(all.length===1)remark='Great start!';
  const markerX=px,markerY=py;
  const markerTextY=Math.max(17,markerY-22);
- const gauge='<svg viewBox="0 0 420 248" role="img" aria-label="Average score '+pct+' percent"><defs><linearGradient id="scoreGradient"><stop offset="0%" stop-color="#e85f66"/><stop offset="50%" stop-color="#ffc349"/><stop offset="100%" stop-color="#43c894"/></linearGradient></defs>'+
- '<path d="M 50 205 A 160 160 0 0 1 370 205" fill="none" stroke="#e9edf5" stroke-width="35" stroke-linecap="round"/>'+
- '<path d="M 50 205 A 160 160 0 0 1 370 205" fill="none" stroke="url(#scoreGradient)" stroke-width="30" stroke-linecap="round"/>'+
- (all.length?'<path d="M 210 205 L '+markerX.toFixed(1)+' '+markerY.toFixed(1)+'" stroke="#404450" stroke-width="9" stroke-linecap="round"/><circle cx="210" cy="205" r="13" fill="#adb5c4" stroke="#fff" stroke-width="4"/><circle cx="'+markerX.toFixed(1)+'" cy="'+markerY.toFixed(1)+'" r="10" fill="#fff" stroke="#4bba76" stroke-width="5"/><text x="'+markerX.toFixed(1)+'" y="'+markerTextY.toFixed(1)+'" text-anchor="middle" fill="#29335f" font-size="23" font-weight="700">'+pct+'%</text>':'')+
+ const bubbleFile=remarkClass==='down'?'bubble_red.png':remarkClass==='neutral'?'bubble_orange.png':'bubble_green.png';
+ const bubbleColor=remarkClass==='down'?'#a23b32':remarkClass==='neutral'?'#965b10':'#1a7540';
+ const gauge='<svg viewBox="0 0 420 248" role="img" aria-label="Average score '+pct+' percent">'+
+ '<image href="images/progress_bar.png" x="25" y="15" width="370" height="213" preserveAspectRatio="xMidYMid meet"/>'+
+ (all.length?'<image href="images/progress_handle.png" x="45" y="40" width="330" height="330" preserveAspectRatio="xMidYMid meet" transform="rotate('+(pct*1.8-90).toFixed(2)+' 210 205) translate(0 -165)"/>'+
+ '<circle cx="'+markerX.toFixed(1)+'" cy="'+markerY.toFixed(1)+'" r="8" fill="#fff" stroke="#47bd80" stroke-width="4"/>'+
+ '<text x="'+Math.min(390,Math.max(30,markerX+(markerX>=210?27:-27))).toFixed(1)+'" y="'+(markerY-3).toFixed(1)+'" text-anchor="'+(markerX>=210?'start':'end')+'" fill="#29335f" font-size="23" font-weight="700">'+pct+'%</text>':'')+
  '<text x="32" y="242" text-anchor="middle" fill="#7b859d" font-size="16">0%</text><text x="388" y="242" text-anchor="middle" fill="#7b859d" font-size="16">100%</text></svg>';
+
  el.innerHTML='<h2>'+escapeHtml(activeStudentName()||'Student')+' Highlight</h2><p class="highlights-date">'+highlightDate()+'</p>'+
- '<div class="highlights-gauge">'+gauge+(remark?'<div class="highlights-remark '+remarkClass+'">'+escapeHtml(remark)+'</div>':'')+'</div>'+
+ '<div class="highlights-gauge">'+gauge+(remark?'<div class="highlights-bubble" style="background-image:url(images/'+bubbleFile+')"><span class="highlights-bubble-text" style="color:'+bubbleColor+'">'+escapeHtml(remark)+'</span></div>':'')+'</div>'+
  '<div class="highlights-stats"><div class="highlights-stat"><small>Total attempts</small><strong>'+all.length+'</strong></div>'+
  '<div class="highlights-stat high"><small>High score</small><strong>'+counts.high+'</strong></div>'+
  '<div class="highlights-stat medium"><small>Medium score</small><strong>'+counts.medium+'</strong></div>'+
