@@ -271,6 +271,22 @@ button:not(:disabled):active{transform:translateY(4px) scale(.985)!important;box
 .highlights-gauge{margin:50px auto 50px;max-width:520px}
 .highlights-stats{margin-top:0;margin-bottom:50px}
 .highlights h3{margin-top:0}
+
+/* Reversible clay-style experiment: home subject buttons only. */
+#home .tile{
+ position:relative;isolation:isolate;overflow:hidden;
+ border:2px solid #ffffff78;border-radius:30px;
+ background-image:radial-gradient(ellipse at 28% 13%,#ffffff63 0%,#ffffff19 35%,transparent 62%),linear-gradient(155deg,#ffffff28 0%,transparent 49%,#29335f23 100%);
+ background-blend-mode:screen,normal;
+ box-shadow:inset 0 3px 3px #ffffff8a,inset 0 -6px 9px #29335f23,0 7px 0 #29335f2e,0 13px 18px #29335f1b;
+ text-shadow:0 2px 2px #29335f30;
+ transition:transform .19s steps(4,end),box-shadow .19s steps(4,end),filter .19s steps(4,end);
+}
+#home .tile::after{content:"";position:absolute;inset:7px 9px auto;height:40%;border-radius:55% 55% 45% 45%;background:linear-gradient(#ffffff32,transparent);pointer-events:none}
+#home .tile:hover{transform:translateY(-3px) rotate(-.4deg);filter:brightness(1.04);box-shadow:inset 0 3px 4px #ffffff9c,inset 0 -6px 9px #29335f20,0 10px 0 #29335f2b,0 17px 20px #29335f20}
+#home .tile:active{transform:translateY(5px) scale(.985) rotate(.3deg);box-shadow:inset 0 3px 8px #29335f26,inset 0 -2px 4px #ffffff8a,0 2px 0 #29335f2b,0 5px 9px #29335f16}
+#home .tile:focus-visible{outline:3px solid #29335f;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){#home .tile{transition:none}}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><input id="studentName" class="student-name" maxlength="40" placeholder="Type in your name and press Enter" aria-label="Student name" onkeydown="if(event.key==='Enter'){this.blur();saveStudentName()}" onchange="saveStudentName()"><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" id="selectionBack" onclick="selectionBack()">Back</button><button class="back selection-home" onclick="home()">Home</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div><div id="subjectHighlights" class="highlights hidden"></div></section>
