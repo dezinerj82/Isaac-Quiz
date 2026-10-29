@@ -17,6 +17,7 @@ HOW TO WORK WITH ME
 - Keep goldenrule.txt current and consolidated. Remove superseded instructions rather than accumulating contradictory historical rules. Do not add purely visual CSS/layout/color/font descriptions here.
 
 EXAM CONTENT AND LEVEL RULES
+- When scanned textbooks/workbooks are supplied, derive subject-level quiz chapters from actual learning objectives and skills, not merely story, essay or theme titles printed as book units. Compare all relevant books, merge overlapping skills, and label chapters by what the student learns. Without scanned content (as with PM3 English and Malay), mark the chapter mapping unverified; never infer exact teaching scope from theme titles alone. Store resulting chapter names, mappings and source inventories only in the appropriate backup/PMxmodule.txt; this file records the method, not the chapter lists.
 - Available school levels are PM3, PM4, PM5, PM6, SC1, SC2, SC3, SC4 and SC5. PM1 and PM2 are permanently excluded.
 - Show a school-level option only when that subject/level has at least one real playable quiz. Show a chapter/revision option only when its question data and launch behavior exist. No empty buttons or unfinished placeholders.
 - On entering a subject, initially show the available levels with 'Choose your level on top'. If none have content, show 'No quizzes available yet.' Selecting a level reveals only its available chapter/revision quizzes; reset the selection when entering a subject again.
