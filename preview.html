@@ -204,7 +204,7 @@ let selectedLevel=null,selectedCategory=null;
 function availableEntries(level,s,category){
  const entries=[];
  // Each category is shown only when it contains real playable questions.
- if(level==='PM3'&&category==='Exercise'&&typeof exerciseBank!=='undefined'&&exerciseBank[s]){for(const [topic,rows] of Object.entries(exerciseBank[s])){if(rows.length===10)entries.push({title:topic+' (10 questions)',action:'startExercise('+JSON.stringify(topic)+')'});}}
+ if(level==='PM3'&&category==='Exercise'&&typeof exerciseBank!=='undefined'&&exerciseBank[s]){for(const [topic,rows] of Object.entries(exerciseBank[s])){if(rows.length===10)entries.push({title:topic+' (10 questions)',action:'startExercise('+JSON.stringify(topic).replace(/\"/g,'&quot;')+')'});}}
  if(level==='PM3'&&category==='Exam'&&sample[s]&&sample[s].length){
   entries.push({title:s+' — Exam Revision ('+sample[s].length+' questions)',action:'start(1)'});
  }
