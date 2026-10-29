@@ -284,6 +284,29 @@ button:not(:disabled):active{transform:translateY(4px) scale(.985)!important;box
 
 /* Knowledge breakdown rows sit flat within the shadowed outer frame. */
 .highlights .knowledge-row,.highlights .knowledge-head{box-shadow:none}
+
+/* Unified navigation buttons (outside quiz questions). */
+#home .tile,.selectionscreen .level-button,.selectionscreen .version,.selectionscreen .back{
+ border:0;
+ border-radius:999px;
+ font-weight:700;
+ box-shadow:0 3px 9px #29335f12,0 7px 16px #29335f0b!important;
+ transition:transform .16s ease,box-shadow .16s ease,filter .16s ease;
+}
+.selectionscreen .level-button{
+ background:linear-gradient(120deg,#5FACD3,#525EA7);
+ color:#fff;
+ padding:12px 20px;
+ min-height:48px;
+ font-size:clamp(15px,2vw,19px);
+}
+.selectionscreen .version{border-radius:999px}
+#home .tile:hover,.selectionscreen .level-button:hover,.selectionscreen .version:hover,.selectionscreen .back:hover{transform:translateY(-2px);filter:brightness(1.035)}
+#home .tile:active,.selectionscreen .level-button:active,.selectionscreen .version:active,.selectionscreen .back:active{
+ transform:translateY(1px);
+ box-shadow:0 1px 4px #29335f12!important;
+}
+@media(prefers-reduced-motion:reduce){#home .tile,.selectionscreen .level-button,.selectionscreen .version,.selectionscreen .back{transition:none}}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><input id="studentName" class="student-name" maxlength="40" placeholder="Type in your name and press Enter" aria-label="Student name" onkeydown="if(event.key==='Enter'){this.blur();saveStudentName()}" onchange="saveStudentName()"><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" id="selectionBack" onclick="selectionBack()">Back</button><button class="back selection-home" onclick="home()">Home</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div><div id="subjectHighlights" class="highlights hidden"></div></section>
