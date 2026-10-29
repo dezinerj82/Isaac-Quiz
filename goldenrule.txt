@@ -61,6 +61,15 @@ DAILY QUIZ — BIWEEKLY FROM 2027-01-03 (PM4 ONWARD)
 - Stay close to verified textbook learning content and exam-style questions found in books. Adapt accurate book questions or write original questions, examples and short stories where needed for sufficient variety, provided the tested skill remains within the relevant learning objectives. Proofread and correct errors in locally produced books.
 - Arrange a proof-check follow-up after each scheduled deployment, before the next practice period, to check question wording, choices, correct answers, explanations, chapter alignment and functionality. Never claim live deployment is confirmed without verification.
 
+EXERCISE — ON-DEMAND WEAK-AREA PRACTICE
+- Exercise is a third quiz category alongside Daily Quiz and Exam Revision. It is created only when the user requests targeted practice for a particular weakness in a subject, and does not require the school booklist, textbook chapters or exam scope.
+- Follow the user's specified weak area and ability level, including levels below the student's current school year (for example, kindergarten-level Malay vocabulary). Adapt difficulty and question formats to the actual need rather than assuming the school grade.
+- Each Exercise version contains exactly 10 questions. Create a descriptive topic label under the subject, with a sequential version number, e.g. English Exercise — Vocabulary 1, then English Exercise — Vocabulary 2.
+- When another Exercise is requested for the same subject/topic, inspect all existing versions and generate 10 new, nonduplicated questions. Avoid repeating the same questions across versions, even if the learning objective is the same; vary wording, examples, answers and scenarios while staying on topic.
+- Treat different weak areas as distinct Exercise topics with their own version numbering. Proofread answers and explanations before publishing.
+- Only show an Exercise topic/version button when its actual playable question bank and launch behavior have been implemented. Do not add empty placeholder buttons. Preserve the existing website design and all Daily Quiz/Exam Revision behavior.
+- No automatic Exercise generation schedule; user requests each version as needed.
+
 EXAM REVISION — ONLY WHEN REQUESTED
 - Three school exams annually: Assessment, Middle Exam and Final Exam. Exam dates vary yearly; never schedule automatic exam revision generation.
 - Assessment revision: use the teacher-provided exam scope and relevant textbook/workbook material (no prior assessment paper yet).
