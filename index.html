@@ -205,6 +205,30 @@ button:not(:disabled):active{transform:translateY(4px) scale(.985)!important;box
 .knowledge-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#e85f66,#ffc349,#43c894)}
 .highlights-empty{text-align:center;color:#7a86a1;padding:25px 10px}
 @media(max-width:540px){.selectionscreen{padding-top:108px!important}.highlights{padding-top:10px}.highlights-isaac{width:35px;height:35px}.highlights-stats{gap:8px}}
+
+/* Refined highlights layout */
+.highlights{width:min(620px,100%);margin:26px auto 0;padding:22px 18px 26px;border:2px solid #e2eafb;border-radius:25px;box-shadow:0 7px 20px #29335f0a}
+.highlights h2{text-align:left;font-size:clamp(21px,3vw,27px);margin:0 0 3px}
+.highlights-date{text-align:left;font-size:15px;margin:0 0 10px}
+.highlights-gauge{max-width:420px;margin:0 auto 6px;position:relative}
+.highlights-gauge svg{width:100%;height:auto;display:block;overflow:visible}
+.highlights-remark{position:absolute;right:0;top:3%;max-width:150px;padding:10px 13px;border-radius:20px;background:#e7f9ee;color:#21834b;font-size:clamp(13px,2.5vw,17px);font-weight:700;transform:rotate(5deg);text-align:center;box-shadow:0 4px 12px #29335f10}
+.highlights-remark.down{background:#fff0d9;color:#b16c17}
+.highlights-remark.neutral{background:#f0f3ff;color:#525ea7}
+.highlights-stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:4px 0 22px}
+.highlights-stat{padding:11px 4px;border:1px solid #e3eafa;border-radius:14px}
+.highlights-stat.high{background:#edfaef;border-color:#c5eecb}
+.highlights-stat.medium{background:#fff7e7;border-color:#f9e2ad}
+.highlights-stat.low{background:#fff0f2;border-color:#f5c6cc}
+.highlights-stat small{font-size:clamp(10px,1.8vw,13px)}
+.highlights-stat strong{font-size:clamp(19px,3vw,25px)}
+.highlights h3{font-size:clamp(20px,3vw,25px);margin:12px 0 14px}
+.knowledge-head{display:grid;grid-template-columns:minmax(95px,auto) 1fr auto;gap:12px;align-items:center;margin:0}
+.knowledge-row{padding:10px}
+.knowledge-label{font-size:clamp(12px,2.3vw,16px)}
+.knowledge-track{height:12px}
+.knowledge-percent{font-size:clamp(16px,2.8vw,20px)}
+@media(max-width:540px){.highlights{padding:18px 11px}.highlights-remark{max-width:105px;padding:7px;font-size:12px}.highlights-stats{gap:5px}.knowledge-head{gap:7px}}
 </style></head><body>
 <main id="home" class="screen"><h1 class="rainbow" data-rainbow="Quiz time">Quiz time</h1><input id="studentName" class="student-name" maxlength="40" placeholder="Type in your name and press Enter" aria-label="Student name" onkeydown="if(event.key==='Enter'){this.blur();saveStudentName()}" onchange="saveStudentName()"><div class="tilegrid" id="subjects"></div></main>
 <section id="selection" class="screen selectionscreen hidden"><button class="back" id="selectionBack" onclick="selectionBack()">Back</button><button class="back selection-home" onclick="home()">Home</button><h1 class="rainbow" id="subjectTitle"></h1><div class="versionlist" id="versions"></div><div id="subjectHighlights" class="highlights hidden"></div></section>
@@ -295,30 +319,46 @@ function subjectScoreData(){
  remoteScoreReports.forEach(e=>add(e,true));
  return [...combined.values()];
 }
+function highlightDate(){
+ const d=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Kuala_Lumpur',month:'long',day:'numeric',year:'numeric'}).formatToParts(new Date());
+ const p=Object.fromEntries(d.map(x=>[x.type,x.value])),day=Number(p.day);
+ const suffix=day%100>=11&&day%100<=13?'th':day%10===1?'st':day%10===2?'nd':day%10===3?'rd':'th';
+ return p.month+' '+day+suffix+' '+p.year;
+}
 function renderHighlights(){
- const el=$('subjectHighlights');
- if(!selectedLevel||selectedCategory)return;
- const today=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kuala_Lumpur',day:'numeric',month:'short',year:'numeric'}).format(new Date());
- const entries=subjectScoreData();
- const all=entries.flatMap(e=>e.attempts.map(a=>({...a,chapter:e.chapter})));
+ const el=$('subjectHighlights');if(!selectedLevel||selectedCategory)return;
+ const entries=subjectScoreData(),all=entries.flatMap(e=>e.attempts.map(a=>({...a,chapter:e.chapter})));
  const pct=all.length?Math.round(all.reduce((n,a)=>n+100*a.score/a.total,0)/all.length):0;
- const counts={high:0,medium:0,low:0};
- all.forEach(a=>counts[scoreBand(100*a.score/a.total)]++);
- const angle=Math.PI-pct*Math.PI/100,px=210+160*Math.cos(angle),py=205-160*Math.sin(angle);
+ const counts={high:0,medium:0,low:0};all.forEach(a=>counts[scoreBand(100*a.score/a.total)]++);
+ const theta=Math.PI-pct*Math.PI/100,px=210+160*Math.cos(theta),py=205-160*Math.sin(theta);
  const groups=new Map();
  all.forEach(a=>{const k=scoreGroup(a.chapter);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(100*a.score/a.total)});
  const rows=[...groups].sort((a,b)=>a[0].localeCompare(b[0])).map(([chapter,scores])=>{
   const avg=Math.round(scores.reduce((a,b)=>a+b,0)/scores.length);
-  return '<div class="knowledge-row"><div class="knowledge-head"><span class="knowledge-label">'+escapeHtml(chapter)+'</span><span class="knowledge-percent">'+avg+'%</span></div><div class="knowledge-track"><div class="knowledge-fill" style="width:'+avg+'%"></div></div></div>';
+  return '<div class="knowledge-row"><div class="knowledge-head"><span class="knowledge-label">'+escapeHtml(chapter)+'</span><div class="knowledge-track"><div class="knowledge-fill" style="width:'+avg+'%"></div></div><span class="knowledge-percent">'+avg+'%</span></div></div>';
  }).join('');
- const icon=pct>=85?'images/Isaac high score.png':pct>=60?'images/Isaac middle score.png':'images/Isaac low score.png';
- el.innerHTML='<h2>'+escapeHtml(subject)+' Highlights</h2><p class="highlights-date">'+today+'</p>'+
- '<div class="highlights-gauge"><svg viewBox="0 0 420 248" aria-label="Average score '+pct+' percent"><defs><linearGradient id="scoreGradient"><stop offset="0%" stop-color="#e85f66"/><stop offset="50%" stop-color="#ffc349"/><stop offset="100%" stop-color="#43c894"/></linearGradient></defs><path d="M 50 205 A 160 160 0 0 1 370 205" fill="none" stroke="#e9edf5" stroke-width="35" stroke-linecap="round"/><path d="M 50 205 A 160 160 0 0 1 370 205" fill="none" stroke="url(#scoreGradient)" stroke-width="30" stroke-linecap="round"/></svg>'+
- (all.length?'<img class="highlights-isaac" alt="" src="'+icon+'" style="left:'+(px/420*100)+'%;top:'+(py/248*100)+'%">':'')+
- '<div class="highlights-center">'+(all.length?pct+'%':'—')+'<small>Average Score</small></div></div>'+
- '<div class="highlights-stats"><div class="highlights-stat"><small>Total Attempts</small><strong>'+all.length+'</strong></div><div class="highlights-stat"><small>High / Medium / Low</small><strong>'+counts.high+' / '+counts.medium+' / '+counts.low+'</strong></div></div>'+
- '<h3>'+escapeHtml(subject)+' Knowledge Breakdown</h3>'+
- (rows||'<p class="highlights-empty">No score reports for '+escapeHtml(activeStudentName()||'this student')+' yet.</p>');
+ let remark='',remarkClass='neutral';
+ if(all.length>=2){
+  const previous=100*all[all.length-2].score/all[all.length-2].total;
+  const latest=100*all[all.length-1].score/all[all.length-1].total;
+  if(latest>previous){remark='You are improving!';remarkClass=''}
+  else if(latest<previous){remark="Oh no! Don't give up!";remarkClass='down'}
+  else remark='Keep it going!';
+ }else if(all.length===1)remark='Great start!';
+ const markerX=px,markerY=py;
+ const markerTextY=Math.max(17,markerY-22);
+ const gauge='<svg viewBox="0 0 420 248" role="img" aria-label="Average score '+pct+' percent"><defs><linearGradient id="scoreGradient"><stop offset="0%" stop-color="#e85f66"/><stop offset="50%" stop-color="#ffc349"/><stop offset="100%" stop-color="#43c894"/></linearGradient></defs>'+
+ '<path d="M 50 205 A 160 160 0 0 1 370 205" fill="none" stroke="#e9edf5" stroke-width="35" stroke-linecap="round"/>'+
+ '<path d="M 50 205 A 160 160 0 0 1 370 205" fill="none" stroke="url(#scoreGradient)" stroke-width="30" stroke-linecap="round"/>'+
+ (all.length?'<path d="M 210 205 L '+markerX.toFixed(1)+' '+markerY.toFixed(1)+'" stroke="#404450" stroke-width="9" stroke-linecap="round"/><circle cx="210" cy="205" r="13" fill="#adb5c4" stroke="#fff" stroke-width="4"/><circle cx="'+markerX.toFixed(1)+'" cy="'+markerY.toFixed(1)+'" r="10" fill="#fff" stroke="#4bba76" stroke-width="5"/><text x="'+markerX.toFixed(1)+'" y="'+markerTextY.toFixed(1)+'" text-anchor="middle" fill="#29335f" font-size="23" font-weight="700">'+pct+'%</text>':'')+
+ '<text x="32" y="242" text-anchor="middle" fill="#7b859d" font-size="16">0%</text><text x="388" y="242" text-anchor="middle" fill="#7b859d" font-size="16">100%</text></svg>';
+ el.innerHTML='<h2>'+escapeHtml(activeStudentName()||'Student')+' Highlight</h2><p class="highlights-date">'+highlightDate()+'</p>'+
+ '<div class="highlights-gauge">'+gauge+(remark?'<div class="highlights-remark '+remarkClass+'">'+escapeHtml(remark)+'</div>':'')+'</div>'+
+ '<div class="highlights-stats"><div class="highlights-stat"><small>Total attempts</small><strong>'+all.length+'</strong></div>'+
+ '<div class="highlights-stat high"><small>High score</small><strong>'+counts.high+'</strong></div>'+
+ '<div class="highlights-stat medium"><small>Medium score</small><strong>'+counts.medium+'</strong></div>'+
+ '<div class="highlights-stat low"><small>Low score</small><strong>'+counts.low+'</strong></div></div>'+
+ '<h3>Knowledge breakdown</h3>'+(rows||'<p class="highlights-empty">No score reports for '+escapeHtml(activeStudentName()||'this student')+' yet.</p>');
 }
 
 function renderChapterList(){
