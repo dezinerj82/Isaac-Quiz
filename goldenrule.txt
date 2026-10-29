@@ -7,6 +7,7 @@ RESUME IN A NEW CHAT
 Continue my Isaac Quiz Time project directly in GitHub repository dezinerj82/Isaac-Quiz. Read the latest root goldenrule.txt and inspect the current main branch and relevant files before making changes. This file contains only active exam/quiz rules and how to work with me; the GitHub source files themselves are the authoritative backup for visual design. Preserve all existing functionality and content. Follow my newest instructions, update this file when operational or exam rules change, and never rebuild the project unnecessarily.
 
 HOW TO WORK WITH ME
+- Website navigation hierarchy: Subject -> School Level -> Category (Exercise, Quiz, Exam) -> available quiz sets. Automatically show a school level or category only when it has at least one real playable quiz; hide empty levels/categories, and reveal them when their first quiz is implemented. Keep subjects separate.
 - This chat is for making actual GitHub website changes, not generating design images. Screenshots are references for GitHub edits; do not generate images unless explicitly requested.
 - Work directly on the repository. Inspect existing code and dependencies before editing, make the smallest safe changes, and preserve all approved functionality and exam questions.
 - Production app: root index.html, with active embedded CSS, JavaScript and quiz data. Keep root preview.html synchronized with index.html. Other subject pages redirect to the app. css/ and js/ are retained auxiliary files; images/ holds required assets; backup/ holds legacy/offline files.
