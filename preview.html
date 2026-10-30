@@ -624,8 +624,10 @@ function loadScoreHistory(){try{const data=JSON.parse(localStorage.getItem(SCORE
 function scoreDateParts(date){const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kuala_Lumpur',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).formatToParts(date);const p=Object.fromEntries(parts.map(x=>[x.type,x.value]));return {day:p.year+p.month+p.day,time:p.year+'-'+p.month+'-'+p.day+' '+p.hour+':'+p.minute+':'+p.second+' MYT'}}
 function recordScoreAttempt(){
  if(scoreAttemptRecorded||!questions.length)return;
- scoreAttemptRecorded=true;saveStudentName();
- const name=$('studentName').value||'Student';
+ scoreAttemptRecorded=true;
+ const name=activeStudentName();
+ if(!name)return; // Guest quizzes show results but never persist scores.
+ saveStudentName();
  const chapter=activeExerciseTopic?'Exercise '+activeExerciseTopic:'Exam Revision '+version;
  const now=scoreDateParts(new Date());
  const filename=cleanScorePart(name)+'_'+cleanScorePart(subject)+'_'+cleanScorePart(chapter)+'_'+now.day+'.txt';
@@ -638,8 +640,8 @@ function recordScoreAttempt(){
 }
 function downloadScore(){
  if(!scoreAttemptRecorded)recordScoreAttempt();
- const entry=loadScoreHistory()[latestScoreKey];
- if(!entry){alert('Score history unavailable. Please allow browser storage and try again.');return}
+ const entry=activeStudentName()?loadScoreHistory()[latestScoreKey]:null;
+ if(!entry){alert(activeStudentName()?'Score history unavailable. Please allow browser storage and try again.':'Enter your name on the home page to save and download score reports.');return}
  const lines=['Name: '+entry.name,'Subject: '+entry.subject,'Chapter: '+entry.chapter,''];
  entry.attempts.forEach((attempt,i)=>{lines.push('Attempt '+(i+1),'Completed: '+attempt.time,'Quiz version: '+attempt.version,'Score: '+Math.round(attempt.score/attempt.total*100)+'% ('+attempt.score+' out of '+attempt.total+')','Incorrect questions: '+(attempt.incorrect.length?attempt.incorrect.join(', '):'None'));if(attempt.unanswered.length)lines.push('Unanswered questions: '+attempt.unanswered.join(', '));lines.push('')});
  const url=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download=latestScoreKey;link.click();setTimeout(()=>URL.revokeObjectURL(url),500);
